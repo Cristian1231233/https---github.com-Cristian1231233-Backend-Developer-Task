@@ -11,6 +11,7 @@ $page_num = 0;
 $page_size = 0;
 
 
+
 if(isset($_GET['language'])){
     foreach($arrayNodes as $item){
         if($item['language'] === $_GET['language']){
@@ -23,9 +24,9 @@ if(isset($_GET['language'])){
             $filterNode[] = $item;
         }
     }
-}elseif(isset($_GET['search_keyword'])){
+}elseif(isset($_GET['search_keyword']) && isset($_GET['iRight']) && isset($_GET['iLeft'])){
     foreach($arrayNodes as $item){
-        if($item['level'] > $_GET['search_keyword']){
+        if($item['level'] > $_GET['search_keyword'] && $item['iRight'] < $_GET['iRight'] && $item['iLeft'] > $_GET['iLeft']){
             $filterNode[] = $item;
         }
     }
@@ -36,6 +37,7 @@ if(isset($_GET['language'])){
 }else{
     $filterNode = $arrayNodes;
 }
+
 
 
 ?> 
